@@ -1,0 +1,42 @@
+STUDIO A MOBILE 5.1
+PWA + banco local do aplicativo + funcionamento offline + backup/restore
+
+IMPORTANTE
+A versão 5.1 é preparada para instalação como aplicativo (PWA). Para instalar como PWA, o Studio A precisa ser aberto por uma origem HTTPS (ou localhost). Abrir o HTML diretamente como arquivo local (file://) não permite que o Service Worker seja registrado.
+
+PRINCIPAIS MUDANÇAS
+- manifesto PWA e ícones próprios;
+- abertura em modo aplicativo (standalone) após instalação;
+- Service Worker para funcionamento offline;
+- IndexedDB como camada de armazenamento local do aplicativo;
+- localStorage mantido como compatibilidade/fallback e migração;
+- sincronização automática entre IndexedDB e os dados existentes;
+- backup JSON e restauração continuam disponíveis dentro do aplicativo;
+- indicador visual de modo online/offline;
+- botão de instalação quando o navegador disponibilizar a instalação;
+- preservação da base da versão 5.0.
+
+BACKUP
+Use Mais > Dados e segurança > Exportar backup regularmente.
+Para restaurar, use Importar e selecione o arquivo JSON gerado pelo Studio A.
+
+INSTALAÇÃO NO ANDROID
+1. Publique/abra esta pasta em uma origem HTTPS gratuita.
+2. Abra Studio-A.html no Chrome ou Samsung Internet.
+3. Use o botão “Instalar aplicativo” quando aparecer, ou o menu do navegador > Adicionar à tela inicial/Instalar aplicativo.
+4. Depois de instalado, abra sempre pelo ícone Studio A.
+
+OBSERVAÇÃO
+A instalação PWA cria um armazenamento próprio da origem do aplicativo. Não abra alternadamente o arquivo HTML em navegadores diferentes esperando que compartilhem a mesma base.
+
+
+5.1.1 — correções para publicação:
+- identificação interna e backup atualizados para 5.1.1;
+- migração automática de dados da 5.0/5.1;
+- gravação IndexedDB sem ocultar falhas de persistência;
+- consumo de estoque mantém totalValue consistente com saldo × custo/ml;
+- Service Worker com cache próprio da 5.1.1;
+- index.html incluído como entrada para GitHub Pages;
+- manifest apontando para index.html.
+
+Publicação: envie os arquivos da pasta para a raiz do repositório do GitHub Pages. Acesse o endereço HTTPS publicado e instale pelo navegador.
