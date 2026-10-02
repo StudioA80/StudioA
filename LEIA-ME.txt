@@ -1,42 +1,26 @@
-STUDIO A MOBILE 5.1
-PWA + banco local do aplicativo + funcionamento offline + backup/restore
+STUDIO A MOBILE 5.1.2 — REVISÃO FUNCIONAL
 
-IMPORTANTE
-A versão 5.1 é preparada para instalação como aplicativo (PWA). Para instalar como PWA, o Studio A precisa ser aberto por uma origem HTTPS (ou localhost). Abrir o HTML diretamente como arquivo local (file://) não permite que o Service Worker seja registrado.
+Este pacote mantém a chave local studioA_mobile_511 e SCHEMA=13. A normalização agora completa coleções ausentes sem apagar as coleções já existentes e mantém propriedades desconhecidas dos registros editados. Não use “Apagar todos os dados” para atualizar o app.
 
-PRINCIPAIS MUDANÇAS
-- manifesto PWA e ícones próprios;
-- abertura em modo aplicativo (standalone) após instalação;
-- Service Worker para funcionamento offline;
-- IndexedDB como camada de armazenamento local do aplicativo;
-- localStorage mantido como compatibilidade/fallback e migração;
-- sincronização automática entre IndexedDB e os dados existentes;
-- backup JSON e restauração continuam disponíveis dentro do aplicativo;
-- indicador visual de modo online/offline;
-- botão de instalação quando o navegador disponibilizar a instalação;
-- preservação da base da versão 5.0.
+ARQUIVOS
+- Studio-A.html: aplicação principal.
+- index.html: entrada GitHub Pages, idêntica ao arquivo principal.
+- sw.js: cache offline versionado para a revisão.
+- manifest.webmanifest e icons/: manifesto e ícones PWA preservados.
 
-BACKUP
-Use Mais > Dados e segurança > Exportar backup regularmente.
-Para restaurar, use Importar e selecione o arquivo JSON gerado pelo Studio A.
+CORREÇÕES DESTA REVISÃO
+- Inicialização das coleções usadas pelos módulos (fornecedores, pacotes, fidelidade, promoções, compras, lembretes e fechamentos de caixa).
+- Função global de nome de fornecedor, necessária à renderização do estoque.
+- Cadastro/edição de produtos não depende de uma coleção de fornecedores previamente criada.
+- Edição de fornecedores com preservação do ID e de campos adicionais.
+- Edição de clientes, serviços e produtos preserva propriedades existentes não editadas.
+- Metadados de backup atualizados para 5.1.2 e aviso em falha de sincronização IndexedDB.
 
-INSTALAÇÃO NO ANDROID
-1. Publique/abra esta pasta em uma origem HTTPS gratuita.
-2. Abra Studio-A.html no Chrome ou Samsung Internet.
-3. Use o botão “Instalar aplicativo” quando aparecer, ou o menu do navegador > Adicionar à tela inicial/Instalar aplicativo.
-4. Depois de instalado, abra sempre pelo ícone Studio A.
+DADOS E BACKUP
+A atualização não remove o localStorage nem apaga a base IndexedDB. Antes de publicar, exporte um backup no app atual. Não limpe os dados do site/navegador para forçar atualização. A restauração de backup substitui os dados atuais e deve ser feita somente após exportar uma cópia de segurança.
 
-OBSERVAÇÃO
-A instalação PWA cria um armazenamento próprio da origem do aplicativo. Não abra alternadamente o arquivo HTML em navegadores diferentes esperando que compartilhem a mesma base.
+PUBLICAÇÃO
+Extraia este ZIP e envie os sete arquivos/pastas para a raiz do repositório StudioA80/StudioA, mantendo icons/ e substituindo os arquivos com os mesmos nomes. Aguarde o GitHub Pages e abra a URL HTTPS publicada.
 
-
-5.1.1 — correções para publicação:
-- identificação interna e backup atualizados para 5.1.1;
-- migração automática de dados da 5.0/5.1;
-- gravação IndexedDB sem ocultar falhas de persistência;
-- consumo de estoque mantém totalValue consistente com saldo × custo/ml;
-- Service Worker com cache próprio da 5.1.1;
-- index.html incluído como entrada para GitHub Pages;
-- manifest apontando para index.html.
-
-Publicação: envie os arquivos da pasta para a raiz do repositório do GitHub Pages. Acesse o endereço HTTPS publicado e instale pelo navegador.
+LIMITAÇÃO
+A validação estática e os testes automatizados incluídos no processo não substituem testes finais no navegador Android com uma cópia real da base do usuário. Não considere o app homologado sem testar cadastro, edição, agenda, atendimento, estoque, backup/restauração e modo offline no aparelho.
